@@ -7,7 +7,7 @@ Challenge: Using the array map method, render a child component for each todo it
 */
 
 import React from "react"
-import TodoItem from "./TodoItem"
+import TodoItem from "./ToDoItem"
 import todosData from "./todosData"
 function App() {
     const init = todosData.map(item => <TodoItem key={item.id} product={item} />)
