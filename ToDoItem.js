@@ -1,11 +1,14 @@
-//BE WARNED!
-//This does throw a error, but you can see the results.
+// Doesn't throw a error anymore:)
 import React from "react"
+function change(){
+console.log("Changed!")
+
+}
 
 function TodoItem(props) {
     return (
         <div className="todo-item">
-            <input type="checkbox" checked={props.product.completed}/>
+            <input id="checkbox" type="checkbox" onChange = {change} checked={props.product.completed}/>
             <p>{props.product.text}</p>
         </div>
     )
