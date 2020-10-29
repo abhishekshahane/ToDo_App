@@ -1,14 +1,13 @@
 // Doesn't throw a error anymore:)
-import React from "react"
-function change(){
-console.log("Changed!")
-
-}
+import React from "react" 
 
 function TodoItem(props) {
     return (
         <div className="todo-item">
-            <input id="checkbox" type="checkbox" onChange = {change} checked={props.product.completed}/>
+            <input  type="checkbox"
+            // Every time the checkbox is checked, call the handleChange method so we can update it. 
+            onChange = {()=> props.handleChange(props.product.id)} 
+            checked={props.product.completed}/>
             <p>{props.product.text}</p>
         </div>
     )
