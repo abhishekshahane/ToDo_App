@@ -23,7 +23,11 @@ this.setState(function(prevState){
     const updated = prevState.todos.map(function(todo){
         if (todo.id === id){
             //Flip the todo
-            todo.completed = !todo.completed
+return{
+    ...todo,
+    //Return completed instead, not modifying old state
+    completed: !todo.completed
+}
         }
         //return the new todo
         return todo
