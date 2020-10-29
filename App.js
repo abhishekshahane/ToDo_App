@@ -1,9 +1,9 @@
 /*
-Now finished Todo stage 5.
+Now finished Todo stage 6.
 */
 
 import React, {Component} from "react"
-import TodoItem from "./ToDoItem"
+import TodoItem from "./TodoItem"
 import todosData from "./todosData"
 class App extends Component{
     constructor(){
@@ -12,9 +12,31 @@ class App extends Component{
             //Managing todosData here now
             todos: todosData
         }
+        //As per the lecture, we have to bind the function to this.
+                this.handleChange = this.handleChange.bind(this)
     }
+    //Our function, that takes the id as a param.
+    handleChange(id){
+        // Set the new state, taking into account the previous state.
+this.setState(function(prevState){
+    // If the todo id is equal to the id we are checking, make the todo checked/unchecked.
+    const updated = prevState.todos.map(function(todo){
+        if (todo.id === id){
+            //Flip the todo
+            todo.completed = !todo.completed
+        }
+        //return the new todo
+        return todo
+    })
+    //Set the todos to be updated(as per the new array we've made).
+    return{
+        todos: updated
+    }
+    })
+    }
+        
     render(){
-        const init = this.state.todos.map(item => <TodoItem key={item.id} product={item} />)
+        const init = this.state.todos.map(item => <TodoItem key={item.id} product={item} handleChange={this.handleChange}/>)
         return(
             <div>
             {init}
